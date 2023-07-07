@@ -1,7 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg bg-light shadow fixed-top">
     <div class="container px-5">
-      <a class="navbar-brand" :href="route('home')">{{ name }}</a>
+      <div class="navbar-brand">
+        <img class="brand-img" width="100%" src="/img/brand_logo.png" />
+      </div>
       <button
         class="navbar-toggler"
         type="button"
@@ -39,5 +41,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.navbar-brand {
+  width: 50%;
+  max-width: 200px;
+}
 </style>
