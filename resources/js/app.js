@@ -25,6 +25,11 @@ Vue.use(ZiggyVue, Ziggy); //for laravel routes
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
+Vue.component('mast-head', require('./components/MastHead.vue').default);
+Vue.component('about', require('./components/About.vue').default);
+Vue.component('services', require('./components/Services.vue').default);
+Vue.component('testimonials', require('./components/Testimonials.vue').default);
+Vue.component('contact', require('./components/Contact.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

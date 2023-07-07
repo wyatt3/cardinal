@@ -25,8 +25,15 @@
 
 <body>
     <div id="app">
+        <nav-bar name="{{ config('app.name') }}"></nav-bar>
         @yield('content')
+        <footer class="py-5 bg-dark">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white">Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</p>
+            </div>
+        </footer>
     </div>
+
 </body>
 
 </html>
