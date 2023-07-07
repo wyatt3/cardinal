@@ -15,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['register' => false]);
+Route::domain('admin.' . env('APP_URL'))->group(function () {
+    Route::get('/', function () {
+        return "admin";
+    });
+});
+
 Route::get('/', [Controller::class, 'index'])->name('home');
+
+Auth::routes(['register' => false]);
