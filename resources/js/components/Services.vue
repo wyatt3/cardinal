@@ -1,5 +1,6 @@
 <template>
-  <section class="bg-light pb-5 border-bottom" id="services">
+  <section class="bg-light pb-5 border-bottom">
+    <span class="anchor" id="services"></span>
     <div class="container px-5 my-5">
       <div class="text-center mb-5">
         <h2 class="fw-bolder">Services</h2>

@@ -12,3 +12,12 @@ section:before {
     content: '';
     display: block;
 }
+
+section {
+    position: relative;
+}
+
+section > .anchor {
+    position: absolute;
+    top: -65px;
+}

@@ -1,5 +1,6 @@
 <template>
-  <section class="pb-5 border-bottom" id="about">
+  <section class="pb-5 border-bottom">
+    <span class="anchor" id="about"></span>
     <div class="container px-5 my-5">
       <div class="row gx-5">
         <div class="col-lg-4 mb-5 mb-lg-0">

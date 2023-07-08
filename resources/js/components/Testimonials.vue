@@ -1,5 +1,5 @@
 <template>
-  <section class="pb-5 border-bottom">
+  <section class="px-5 border-bottom">
     <div class="container px-5 my-5 px-5">
       <div class="text-center mb-5">
         <h2 class="fw-bolder">Customer testimonials</h2>
