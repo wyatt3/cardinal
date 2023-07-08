@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div id="app" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0">
+    <div id="app">
         <nav-bar name="{{ config('app.name') }}"></nav-bar>
         @yield('content')
         <footer class="py-5 bg-dark">
