@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-light shadow fixed-top">
+  <nav class="navbar navbar-expand-lg bg-light shadow fixed-top" id="navbar">
     <div class="container px-5">
       <div class="navbar-brand">
         <img class="brand-img" width="100%" src="/img/brand_logo.png" />

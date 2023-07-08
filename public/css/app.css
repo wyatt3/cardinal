@@ -11982,3 +11982,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+section:before {
+  height: 50px;
+  content: "";
+  display: block;
+}

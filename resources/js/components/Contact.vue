@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-light py-5" id="contact">
+  <section class="bg-light pb-5" id="contact">
     <div class="container px-5 my-5 px-5">
       <div class="text-center mb-5">
         <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
