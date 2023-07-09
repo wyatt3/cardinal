@@ -12,9 +12,7 @@
           class="col-12 col-md-4"
         >
           <div class="card mb-5">
-            <div class="card-body p-3">
-              {{ service.name }}
-            </div>
+            <div class="card-body p-3" v-text="service.name"></div>
           </div>
         </div>
       </div>
