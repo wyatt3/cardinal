@@ -2,59 +2,29 @@
   <section class="pb-5 border-bottom">
     <span class="anchor" id="about"></span>
     <div class="container px-5 my-5">
-      <div class="row gx-5">
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-            <i class="bi bi-collection"></i>
-          </div>
-          <h2 class="h4 fw-bolder">Featured title</h2>
-          <p>
-            Paragraph of text beneath the heading to explain the heading. We'll
-            add onto it with another sentence and probably just keep going until
-            we run out of words.
-          </p>
-          <a class="text-decoration-none" href="#!">
-            Call to action
-            <i class="bi bi-arrow-right"></i>
-          </a>
-        </div>
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-            <i class="bi bi-building"></i>
-          </div>
-          <h2 class="h4 fw-bolder">Featured title</h2>
-          <p>
-            Paragraph of text beneath the heading to explain the heading. We'll
-            add onto it with another sentence and probably just keep going until
-            we run out of words.
-          </p>
-          <a class="text-decoration-none" href="#!">
-            Call to action
-            <i class="bi bi-arrow-right"></i>
-          </a>
-        </div>
-        <div class="col-lg-4">
-          <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-            <i class="bi bi-toggles2"></i>
-          </div>
-          <h2 class="h4 fw-bolder">Featured title</h2>
-          <p>
-            Paragraph of text beneath the heading to explain the heading. We'll
-            add onto it with another sentence and probably just keep going until
-            we run out of words.
-          </p>
-          <a class="text-decoration-none" href="#!">
-            Call to action
-            <i class="bi bi-arrow-right"></i>
-          </a>
-        </div>
+      <div class="text-center mb-5">
+        <h2 class="fw-bolder">About Us</h2>
+        <p class="text-center" v-text="aboutUsText"></p>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  name: "About",
+  data() {
+    return {
+      aboutUsText: "",
+    };
+  },
+  created() {
+    axios.get(route("about")).then((response) => {
+      this.aboutUsText = response.data.about;
+    });
+  },
+};
 </script>
 
 <style>

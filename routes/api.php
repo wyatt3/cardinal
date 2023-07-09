@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::get('services', [ServiceController::class, 'index'])->name('services');
+Route::get('about', [Controller::class, 'getAbout'])->name('about');
+Route::post('contact', [Controller::class, 'postContact'])->name('contact');
