@@ -27,9 +27,7 @@ class MessageController extends Controller
     {
         $messages = Message::all();
 
-        return response()->json([
-            'messages' => $messages
-        ]);
+        return response()->json($messages);
     }
 
     public function deleteMessage($id)

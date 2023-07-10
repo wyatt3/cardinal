@@ -19,7 +19,7 @@ export default {
   },
   created() {
     axios.get(route("messages")).then((response) => {
-      this.messages = response.data.messages;
+      this.messages = response.data;
     });
   },
   methods: {
