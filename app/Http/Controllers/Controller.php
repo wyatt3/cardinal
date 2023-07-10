@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -35,9 +36,7 @@ class Controller extends BaseController
             'message' => 'required'
         ]);
 
-        $name = $validated['name'];
-        $email = $validated['email'];
-        $message = $validated['message'];
+        Message::create($validated);
 
         return response()->json([
             'success' => true,

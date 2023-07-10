@@ -8,7 +8,13 @@
       </div>
       <div class="row gx-5 justify-content-center">
         <div class="col-lg-6">
-          <form id="contactForm" :action="route('contact')">
+          <form
+            class="position-relative"
+            id="contactForm"
+            :action="route('contact')"
+            method="POST"
+            @submit.prevent="submitContactForm"
+          >
             <!-- Name input-->
             <div class="form-floating mb-3">
               <input
@@ -55,11 +61,16 @@
               <label for="message">Message</label>
             </div>
             <!-- Submit success message-->
-            <div class="d-none" id="submitSuccessMessage">
-              <div class="text-center mb-3">
-                <div class="fw-bolder">Form submission successful!</div>
+            <transition name="fade">
+              <div id="submitSuccessMessage" v-if="showSuccessMessage">
+                <div class="notification-body">
+                  <div class="text-center">
+                    <div class="fw-bolder">Thank you for contacting us!</div>
+                    We'll get back to you as soon as we can
+                  </div>
+                </div>
               </div>
-            </div>
+            </transition>
             <!-- Submit Button-->
             <div class="d-grid">
               <button
@@ -67,9 +78,8 @@
                 class="btn btn-primary btn-lg"
                 id="submitButton"
                 type="submit"
-              >
-                Submit
-              </button>
+                v-html="loading ? 'Loading...' : 'Submit'"
+              ></button>
             </div>
           </form>
         </div>
@@ -82,10 +92,12 @@
 export default {
   data() {
     return {
+      loading: false,
       name: "",
       email: "",
       phone: "",
       message: "",
+      showSuccessMessage: false,
     };
   },
   computed: {
@@ -98,8 +110,65 @@ export default {
       );
     },
   },
+  methods: {
+    submitContactForm() {
+      if (this.complete) {
+        this.loading = true;
+        axios
+          .post(route("contact"), {
+            name: this.name,
+            email: this.email,
+            phone: this.phone,
+            message: this.message,
+          })
+          .then((response) => {
+            this.loading = false;
+            if (response.status === 200 && response.data.success == true) {
+              this.name = "";
+              this.email = "";
+              this.phone = "";
+              this.message = "";
+              this.showSuccessMessage = true;
+              setTimeout(() => {
+                this.showSuccessMessage = false;
+              }, 3000);
+            }
+          });
+      }
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
+#submitSuccessMessage {
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+}
+
+.notification-body {
+  position: fixed;
+  z-index: 1032;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
