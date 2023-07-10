@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::domain('admin.' . env('APP_URL'))->group(function () {
-    Route::get('/', function () {
-        return "admin";
+    Auth::routes(['register' => false, 'password.request' => false, 'password.reset' => false, 'password.update' => false, 'password.confirm' => false, 'email.verification' => false, 'email.verification.notice' => false]);
+    Route::middleware('auth')->group(function () {
+        Route::get('/', [Controller::class, 'adminIndex'])->name('admin.home');
     });
-    Auth::routes(['register' => false]);
 });
 
 Route::get('/', [Controller::class, 'index'])->name('home');
