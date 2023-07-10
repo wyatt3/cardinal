@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ServiceController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+    Route::get('messages', [MessageController::class, 'getMessages'])->name('messages');
+    Route::delete('messages', [MessageController::class, 'deleteMessage'])->name('messages.delete');
 });
 
 Route::get('services', [ServiceController::class, 'index'])->name('services');
