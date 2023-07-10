@@ -9,10 +9,14 @@
         <div
           v-for="service in services"
           :key="service.id"
-          class="col-12 col-md-4"
+          class="col-12 col-md-4 mb-5"
         >
-          <div class="card mb-5">
-            <div class="card-body p-3" v-text="service.name"></div>
+          <div class="card h-100">
+            <img class="card-img-top" :src="service.image" />
+            <div class="card-body p-3">
+              <h5 class="card-title" v-text="service.name"></h5>
+              <p class="card-text" v-text="service.description"></p>
+            </div>
           </div>
         </div>
       </div>
