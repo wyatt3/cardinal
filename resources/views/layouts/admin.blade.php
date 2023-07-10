@@ -22,6 +22,7 @@
 
 <body>
     <div id="app">
+        <admin-nav></admin-nav>
         @yield('content')
     </div>
 </body>
