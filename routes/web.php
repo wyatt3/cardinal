@@ -19,8 +19,7 @@ Route::domain('admin.' . env('APP_URL'))->group(function () {
     Route::get('/', function () {
         return "admin";
     });
+    Auth::routes(['register' => false]);
 });
 
 Route::get('/', [Controller::class, 'index'])->name('home');
-
-Auth::routes(['register' => false]);
