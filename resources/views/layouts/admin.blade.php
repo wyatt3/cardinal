@@ -29,7 +29,7 @@
                 @else
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <button onclick="document.getElementById('logoutForm').submit()" class="nav-link">Logout</button>
+                        <a href="#" onclick="document.getElementById('logoutForm').submit()" class="nav-link">Logout</a>
                     </li>
                 </ul>
                 <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
