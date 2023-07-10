@@ -19,7 +19,7 @@ class Controller extends BaseController
 
     public function adminIndex()
     {
-        return "admin";
+        return view('admin.index');
     }
 
     public function getAbout()

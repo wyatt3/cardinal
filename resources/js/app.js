@@ -31,6 +31,8 @@ Vue.component('services', require('./components/Services.vue').default);
 Vue.component('testimonials', require('./components/Testimonials.vue').default);
 Vue.component('contact', require('./components/Contact.vue').default);
 
+Vue.component('messages', require('./components/admin/Messages.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

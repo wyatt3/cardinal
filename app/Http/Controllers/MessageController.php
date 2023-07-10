@@ -32,12 +32,9 @@ class MessageController extends Controller
         ]);
     }
 
-    public function deleteMessage(Request $request)
+    public function deleteMessage($id)
     {
-        $request->validate([
-            'id' => 'required|exists:messages,id'
-        ]);
-        $message = Message::find($request->id);
+        $message = Message::findOrFail($id);
         $message->delete();
 
         return response()->json([

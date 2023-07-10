@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('messages', [MessageController::class, 'getMessages'])->name('messages');
-    Route::delete('messages', [MessageController::class, 'deleteMessage'])->name('messages.delete');
+Route::domain('admin.' . env('APP_URL'))->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('messages', [MessageController::class, 'getMessages'])->name('messages');
+        Route::delete('messages/{id}', [MessageController::class, 'deleteMessage'])->name('messages.delete');
+    });
 });
 
 Route::get('services', [ServiceController::class, 'index'])->name('services');
