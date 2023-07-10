@@ -22,7 +22,22 @@
 
 <body>
     <div id="app">
-        <admin-nav></admin-nav>
+        <nav class="navbar navbar-dark bg-dark" id="navbar">
+            <div class="container px-5">
+                <div class="navbar-brand">{{ config('app.name') }} - Admin</div>
+                @guest
+                @else
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button onclick="document.getElementById('logoutForm').submit()" class="nav-link">Logout</button>
+                    </li>
+                </ul>
+                <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                @endguest
+            </div>
+        </nav>
         @yield('content')
     </div>
 </body>

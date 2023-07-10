@@ -31,7 +31,6 @@ Vue.component('services', require('./components/Services.vue').default);
 Vue.component('testimonials', require('./components/Testimonials.vue').default);
 Vue.component('contact', require('./components/Contact.vue').default);
 
-Vue.component('admin-nav', require('./components/admin/AdminNav.vue').default);
 Vue.component('messages', require('./components/admin/Messages.vue').default);
 
 /**
