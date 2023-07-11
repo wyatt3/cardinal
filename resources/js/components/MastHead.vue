@@ -1,23 +1,60 @@
 <template>
-  <header class="carousel" id="home"></header>
+  <header class="carousel" id="home">
+    <transition name="fade" v-for="slide in slides" :key="slide.index">
+      <img
+        class="carousel-image"
+        :style="{ backgroundImage: 'url(' + slide + ')' }"
+        v-if="currentSlide === slides.indexOf(slide)"
+      />
+    </transition>
+    <button @click="currentSlide += 1">Slide</button>
+  </header>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "MastHead",
+  data() {
+    return {
+      currentSlide: 0,
+      interval: 10000,
+      slides: ["/img/hero1.jpg", "/img/hero2.jpg", "/img/hero3.jpg"],
+    };
+  },
+  mounted() {
+    setInterval(() => {
+      this.currentSlide =
+        this.currentSlide + 1 === this.slides.length
+          ? 0
+          : this.currentSlide + 1;
+    }, this.interval);
+  },
+};
 </script>
 
-<style>
+<style scoped>
 .carousel {
-  background-image: url("/img/hero1.jpg");
+  position: relative;
+  overflow: hidden;
+  height: 75vh;
+  width: 100%;
+}
+.carousel-image {
+  position: absolute;
+  top: 0;
   background-size: cover;
   height: 75vh;
   width: 100%;
   background-position: center;
 }
 
-@media screen and (min-width: 768px) {
-  .carousel {
-    background-position: center;
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
