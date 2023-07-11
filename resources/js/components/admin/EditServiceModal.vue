@@ -69,7 +69,7 @@ export default {
         })
         .then((response) => {
           this.open = false;
-          this.$emit("update");
+          this.$emit("serviceUpdate");
         });
     },
   },

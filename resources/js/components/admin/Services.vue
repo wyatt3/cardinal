@@ -23,7 +23,10 @@
         </div>
       </transition-group>
     </draggable>
-    <edit-service-modal ref="EditServiceModal"></edit-service-modal>
+    <edit-service-modal
+      @serviceUpdate="getServices()"
+      ref="EditServiceModal"
+    ></edit-service-modal>
   </div>
 </template>
 
@@ -72,11 +75,14 @@ export default {
       this.$refs.EditServiceModal.description = service.description;
       this.$refs.EditServiceModal.open = true;
     },
+    getServices() {
+      axios.get(route("services")).then((response) => {
+        this.services = response.data;
+      });
+    },
   },
   created() {
-    axios.get(route("services")).then((response) => {
-      this.services = response.data;
-    });
+    this.getServices();
   },
 };
 </script>

@@ -17,7 +17,7 @@ class ServiceController extends Controller
     {
         $request->validate([
             'id' => 'required|integer|exists:services,id',
-            'title' => 'required|string',
+            'name' => 'required|string',
             'description' => 'required|string',
         ]);
 
@@ -32,7 +32,7 @@ class ServiceController extends Controller
         }
 
         $service->update([
-            'title' => $request->title,
+            'name' => $request->name,
             'description' => $request->description,
             'image' => $path ?? $service->image,
         ]);
