@@ -22,8 +22,8 @@ Route::domain('admin.' . env('APP_URL'))->group(function () {
         Route::delete('messages/{id}', [MessageController::class, 'deleteMessage'])->name('messages.delete');
 
         Route::group(['prefix' => 'services'], function () {
-            Route::post('/', [ServiceController::class, 'postService'])->name('services.update');
-            Route::delete('/{id}', [ServiceController::class, 'deleteService'])->name('services.delete');
+            Route::post('/', [ServiceController::class, 'updateService'])->name('services.update');
+            Route::post('/update-order', [ServiceController::class, 'updateServiceOrder'])->name('services.update-order');
         });
     });
 });
