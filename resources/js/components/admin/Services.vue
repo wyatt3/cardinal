@@ -54,14 +54,10 @@ export default {
       this.drag = false;
       this.services.forEach((service, index) => {
         service.order = index + 1;
-        axios
-          .post(route("services.update-order"), {
-            id: service.id,
-            order: service.order,
-          })
-          .then((response) => {
-            console.log(response.data);
-          });
+        axios.post(route("services.update-order"), {
+          id: service.id,
+          order: service.order,
+        });
       });
     },
   },
