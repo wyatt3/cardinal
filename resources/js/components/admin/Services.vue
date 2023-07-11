@@ -17,26 +17,32 @@
         >
           <div class="service-handle"><i class="bi bi-list"></i></div>
           <div class="service-name" v-text="service.name"></div>
-          <button class="btn btn-warning">
+          <button class="btn btn-warning" @click="openEditModal(service)">
             <i class="bi bi-pencil"></i>
           </button>
         </div>
       </transition-group>
     </draggable>
+    <edit-service-modal ref="EditServiceModal"></edit-service-modal>
   </div>
 </template>
 
 <script>
 import draggable from "vuedraggable";
+import EditServiceModal from "./EditServiceModal.vue";
 export default {
   name: "Services",
   components: {
+    EditServiceModal,
     draggable,
   },
   data() {
     return {
       services: [],
       drag: false,
+      id: null,
+      name: null,
+      description: null,
     };
   },
   computed: {
@@ -59,6 +65,12 @@ export default {
           order: service.order,
         });
       });
+    },
+    openEditModal(service) {
+      this.$refs.EditServiceModal.id = service.id;
+      this.$refs.EditServiceModal.name = service.name;
+      this.$refs.EditServiceModal.description = service.description;
+      this.$refs.EditServiceModal.open = true;
     },
   },
   created() {

@@ -15,6 +15,27 @@ class ServiceController extends Controller
 
     public function updateService(Request $request)
     {
+        $request->validate([
+            'id' => 'required|integer|exists:services,id',
+            'title' => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        $service = Service::findOrFail($request->id);
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'required|image',
+            ]);
+            // Save image
+            $path = "path/to/image";
+        }
+
+        $service->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $path ?? $service->image,
+        ]);
     }
 
     public function updateServiceOrder(Request $request)
