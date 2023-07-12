@@ -33,6 +33,7 @@ Vue.component('contact', require('./components/Contact.vue').default);
 
 Vue.component('admin-mast-head', require('./components/admin/MastHead.vue').default);
 Vue.component('admin-services', require('./components/admin/Services.vue').default);
+Vue.component('admin-about', require('./components/admin/About.vue').default);
 Vue.component('messages', require('./components/admin/Messages.vue').default);
 
 /**

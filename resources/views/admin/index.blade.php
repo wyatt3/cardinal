@@ -6,6 +6,7 @@
     <div class="row">
         @for($i = 1; $i <= 3; $i++)<admin-mast-head id="{{ $i }}"></admin-mast-head>@endfor
             <admin-services></admin-services>
+            <admin-about></admin-about>
             <messages></messages>
     </div>
 </div>

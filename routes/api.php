@@ -25,6 +25,8 @@ Route::domain('admin.' . env('APP_URL'))->group(function () {
             Route::post('/update-order', [ServiceController::class, 'updateServiceOrder'])->name('services.update-order');
         });
 
+        Route::post('about', [Controller::class, 'updateAbout'])->name('about.update');
+
         Route::get('messages', [MessageController::class, 'getMessages'])->name('messages');
         Route::delete('messages/{id}', [MessageController::class, 'deleteMessage'])->name('messages.delete');
     });

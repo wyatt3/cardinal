@@ -26,8 +26,19 @@ class Controller extends BaseController
     public function getAbout()
     {
         $about = Storage::get('public/about.txt');
+        return response()->json($about);
+    }
+
+    public function updateAbout(Request $request)
+    {
+        $request->validate([
+            'about' => 'required|string'
+        ]);
+
+        Storage::put('public/about.txt', $request->about);
+
         return response()->json([
-            'about' => $about
+            'message' => 'About updated successfully'
         ]);
     }
 

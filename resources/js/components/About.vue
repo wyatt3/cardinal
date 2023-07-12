@@ -21,7 +21,7 @@ export default {
   },
   created() {
     axios.get(route("about")).then((response) => {
-      this.aboutUsText = response.data.about;
+      this.aboutUsText = response.data;
     });
   },
 };
