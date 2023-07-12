@@ -1,54 +1,47 @@
 <template>
-  <div>
-    <h1 class="text-center mt-5">Header Images</h1>
-    <div class="row">
-      <div
-        class="file-upload col-12 col-lg-4 d-flex flex-column justify-content-between align-items-center"
-        v-for="slide in slides"
-        :key="slide"
-      >
-        <img
-          class="w-100 mb-3 rounded"
-          :src="previewImage[slide] ?? '/storage/img/hero' + slide + '.jpg'"
-        />
-        <input
-          class="d-none"
-          type="file"
-          ref="slide"
-          @change="updateMastHead(slide)"
-        />
-        <input
-          class="btn btn-primary"
-          type="button"
-          value="Upload Image"
-          @click="clickFileInput(slide)"
-        />
-      </div>
-    </div>
+  <div
+    class="file-upload col-12 col-lg-4 d-flex flex-column justify-content-between align-items-center"
+  >
+    <img
+      class="w-100 mb-3 rounded"
+      :src="previewImage ?? '/storage/img/hero' + id + '.jpg'"
+    />
+    <input class="d-none" type="file" ref="slide" @change="updateMastHead()" />
+    <button
+      class="btn btn-primary mb-3"
+      @click="clickFileInput()"
+      :class="{ disabled: uploading }"
+    >
+      <spinner class="text-light" v-if="uploading"></spinner>
+      <span v-else>Upload Image</span>
+    </button>
   </div>
 </template>
 
 <script>
+import Spinner from "../Spinner.vue";
 export default {
   name: "MastHead",
+  props: ["id"],
+  components: {
+    Spinner,
+  },
   data() {
     return {
-      slides: [1, 2, 3],
-      previewImage: {
-        1: null,
-        2: null,
-        3: null,
-      },
+      previewImage: null,
       uploading: false,
     };
   },
   methods: {
-    updateMastHead(id) {
+    updateMastHead() {
       this.uploading = true;
 
-      let image = this.$refs.slide[id - 1].files[0];
+      let image = this.$refs.slide.files[0];
+      if (!image) {
+        return;
+      }
       const formData = new FormData();
-      formData.append("id", id);
+      formData.append("id", this.id);
       formData.append("image", image);
 
       axios
@@ -57,18 +50,17 @@ export default {
             "Content-Type": "multipart/form-data",
           },
         })
-        .then((response) => {
-          if (response.status === 200) {
-            this.previewImage[id] = URL.createObjectURL(image);
-            this.uploading = false;
-          } else {
-            this.uploading = false;
-            alert("Something went wrong. Please try again.");
-          }
+        .then(() => {
+          this.previewImage = URL.createObjectURL(image);
+          this.uploading = false;
+        })
+        .catch((error) => {
+          this.uploading = false;
+          alert("Something went wrong. Please try again. \n" + error);
         });
     },
-    clickFileInput(id) {
-      this.$refs.slide[id - 1].click();
+    clickFileInput() {
+      this.$refs.slide.click();
     },
   },
 };
