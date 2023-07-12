@@ -18,13 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain('admin.' . env('APP_URL'))->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
-        Route::get('messages', [MessageController::class, 'getMessages'])->name('messages');
-        Route::delete('messages/{id}', [MessageController::class, 'deleteMessage'])->name('messages.delete');
+        Route::post('masts', [Controller::class, 'updateMastHeadImage'])->name('masthead.update');
 
         Route::group(['prefix' => 'services'], function () {
             Route::post('/', [ServiceController::class, 'updateService'])->name('services.update');
             Route::post('/update-order', [ServiceController::class, 'updateServiceOrder'])->name('services.update-order');
         });
+
+        Route::get('messages', [MessageController::class, 'getMessages'])->name('messages');
+        Route::delete('messages/{id}', [MessageController::class, 'deleteMessage'])->name('messages.delete');
     });
 });
 

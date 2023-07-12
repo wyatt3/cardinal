@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,6 +28,22 @@ class Controller extends BaseController
         $about = Storage::get('public/about.txt');
         return response()->json([
             'about' => $about
+        ]);
+    }
+
+    public function updateMastHeadImage(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer',
+            'image' => 'required|image'
+        ]);
+
+        $image = $request->file('image');
+        $imageName = "img/hero$request->id.jpg";
+        $image->storeAs('public', $imageName);
+
+        return response()->json([
+            'message' => 'Image uploaded successfully'
         ]);
     }
 }

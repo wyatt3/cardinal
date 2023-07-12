@@ -18,7 +18,11 @@ export default {
     return {
       currentSlide: 0,
       interval: 10000,
-      slides: ["/img/hero1.jpg", "/img/hero2.jpg", "/img/hero3.jpg"],
+      slides: [
+        "/storage/img/hero1.jpg",
+        "/storage/img/hero2.jpg",
+        "/storage/img/hero3.jpg",
+      ],
     };
   },
   mounted() {
