@@ -25,7 +25,11 @@ class MessageController extends Controller
 
     public function getMessages()
     {
-        $messages = Message::all();
+        $messages = Message::orderBy('created_at', 'desc')->get();
+
+        $messages->map(function ($message) {
+            $message->created = $message->created_at->isoFormat('Do MMM YYYY');
+        });
 
         return response()->json($messages);
     }

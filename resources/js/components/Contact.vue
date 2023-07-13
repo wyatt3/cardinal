@@ -3,8 +3,8 @@
     <span class="anchor" id="contact"></span>
     <div class="container px-5 my-5 px-5">
       <div class="text-center mb-5">
-        <h2 class="fw-bolder">Contact Us</h2>
-        <p class="lead mb-0">We'd love to hear from you</p>
+        <h2 class="fw-bolder">Interested?</h2>
+        <p class="lead mb-0">Leave us a message!</p>
       </div>
       <div class="row gx-5 justify-content-center">
         <div class="col-lg-6">

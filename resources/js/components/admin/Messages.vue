@@ -20,7 +20,7 @@
               View Message
             </button>
           </td>
-          <td>{{ message.created_at }}</td>
+          <td>{{ message.created }}</td>
           <td>
             <button class="btn btn-danger" @click="deleteMessage(message.id)">
               <i class="bi bi-trash"></i>
@@ -29,13 +29,22 @@
         </tr>
       </tbody>
     </table>
+    <message-modal
+      ref="MessageModal"
+      @deleteMessage="deleteMessage(currentMessage.id)"
+      :message="currentMessage"
+    ></message-modal>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import MessageModal from "./MessageModal.vue";
 export default {
   name: "Messages",
+  components: {
+    MessageModal,
+  },
   data() {
     return {
       messages: [],
@@ -50,6 +59,7 @@ export default {
   methods: {
     showMessage(message) {
       this.currentMessage = message;
+      this.$refs.MessageModal.open = true;
     },
     deleteMessage(id) {
       axios.delete(route("messages.delete", id)).then((response) => {
