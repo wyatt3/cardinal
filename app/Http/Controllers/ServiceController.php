@@ -31,7 +31,7 @@ class ServiceController extends Controller
 
             $path = $service->getKey() . microtime() . '.jpg';
             $request->image->storeAs('public/img', $path);
-            Storage::delete($service->image);
+            Storage::delete('public/img/' . $service->image);
         }
 
 
