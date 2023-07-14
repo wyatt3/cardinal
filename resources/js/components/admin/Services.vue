@@ -109,9 +109,10 @@ export default {
 }
 
 .service-row {
-  background-color: #d9d9d9;
+  border-bottom: solid 1px rgb(222, 226, 230);
 }
-.service-row:nth-of-type(even) {
-  background-color: #b6b6b6;
+
+.service-row:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 </style>

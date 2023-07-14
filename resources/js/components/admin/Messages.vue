@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="mt-5">Messages</h1>
-    <table class="table table-dark table-striped">
+    <table class="table table-striped">
       <thead>
         <th>Name</th>
         <th>Email</th>
@@ -74,7 +74,6 @@ export default {
 .fake-link {
   background: none;
   border: none;
-  color: #fff;
   text-decoration: underline;
   cursor: pointer;
 }
