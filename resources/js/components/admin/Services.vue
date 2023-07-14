@@ -73,6 +73,7 @@ export default {
       this.$refs.EditServiceModal.id = service.id;
       this.$refs.EditServiceModal.name = service.name;
       this.$refs.EditServiceModal.description = service.description;
+      this.$refs.EditServiceModal.image = service.image;
       this.$refs.EditServiceModal.open = true;
     },
     getServices() {

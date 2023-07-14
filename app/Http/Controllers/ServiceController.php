@@ -27,8 +27,8 @@ class ServiceController extends Controller
             $request->validate([
                 'image' => 'required|image',
             ]);
-            // Save image
-            $path = "path/to/image";
+            $path = $service->getKey() . '.jpg';
+            $request->image->storeAs('public/img', $path);
         }
 
         $service->update([
@@ -36,6 +36,7 @@ class ServiceController extends Controller
             'description' => $request->description,
             'image' => $path ?? $service->image,
         ]);
+        return response()->json($service);
     }
 
     public function updateServiceOrder(Request $request)
