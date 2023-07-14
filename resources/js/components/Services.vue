@@ -12,7 +12,7 @@
           class="col-12 col-md-4 mb-5"
         >
           <div class="card h-100">
-            <img class="card-img-top" :src="service.image" />
+            <img class="card-img-top" :src="'storage/img/' + service.image" />
             <div class="card-body p-3">
               <h5 class="card-title" v-text="service.name"></h5>
               <p class="card-text" v-text="service.description"></p>
