@@ -2,7 +2,7 @@
   <div>
     <h1 class="mt-5">Services</h1>
     <draggable
-      class="services-list mt-3 rounded bg-dark"
+      class="services-list mt-3 rounded"
       handle=".service-handle"
       v-model="services"
       v-bind="dragOptions"
@@ -17,7 +17,10 @@
         >
           <div class="service-handle"><i class="bi bi-list"></i></div>
           <div class="service-name" v-text="service.name"></div>
-          <button class="btn btn-warning" @click="openEditModal(service)">
+          <button
+            class="btn btn-warning"
+            @click="$refs.EditServiceModal.openModal(service)"
+          >
             <i class="bi bi-pencil"></i>
           </button>
         </div>
@@ -106,14 +109,9 @@ export default {
 }
 
 .service-row {
-  color: #fff;
-  border-bottom: 1px solid #272c31;
-}
-
-.service-row:last-of-type {
-  border-bottom: none;
+  background-color: #d9d9d9;
 }
 .service-row:nth-of-type(even) {
-  background-color: #343a40;
+  background-color: #b6b6b6;
 }
 </style>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -27,9 +28,12 @@ class ServiceController extends Controller
             $request->validate([
                 'image' => 'required|image',
             ]);
-            $path = $service->getKey() . '.jpg';
+
+            $path = $service->getKey() . microtime() . '.jpg';
             $request->image->storeAs('public/img', $path);
+            Storage::delete($service->image);
         }
+
 
         $service->update([
             'name' => $request->name,

@@ -119,13 +119,21 @@ export default {
         .then((response) => {
           this.uploading = false;
           this.closeModal();
-          console.log(response.data);
           this.$emit("serviceUpdate");
         })
         .catch((error) => {
           this.uploading = false;
           alert("Something went wrong. Please try again. \n" + error);
         });
+    },
+    openModal(service) {
+      this.open = true;
+      this.id = service.id;
+      this.name = service.name;
+      this.description = service.description;
+      this.image = service.image;
+      this.newImage = null;
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
     },
     closeModal() {
       this.open = false;
@@ -134,6 +142,7 @@ export default {
       this.description = null;
       this.image = null;
       this.newImage = null;
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
     },
   },
 };
@@ -158,10 +167,11 @@ export default {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   background-color: white;
+  transform: translate(-50%, -50%);
   width: 80%;
-  height: 80%;
+  max-height: 80%;
+  overflow-y: auto;
 }
 
 .fade-enter-active,
