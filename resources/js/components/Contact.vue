@@ -111,7 +111,8 @@ export default {
         this.email.length > 0 &&
         this.phone.length > 0 &&
         this.message.length > 0 &&
-        this.isCaptchaChecked()
+        grecaptcha &&
+        grecaptcha.getResponse().length !== 0
       );
     },
   },
@@ -140,9 +141,6 @@ export default {
             }
           });
       }
-    },
-    isCaptchaChecked() {
-      return grecaptcha && grecaptcha.getResponse().length !== 0;
     },
   },
 };
