@@ -34,4 +34,4 @@ Route::domain('admin.' . env('APP_URL'))->group(function () {
 
 Route::get('services', [ServiceController::class, 'index'])->name('services');
 Route::get('about', [Controller::class, 'getAbout'])->name('about');
-Route::post('contact', [Controller::class, 'postContact'])->name('contact');
+Route::post('contact', [MessageController::class, 'postContact'])->name('contact');
