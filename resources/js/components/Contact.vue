@@ -60,6 +60,20 @@
               ></textarea>
               <label for="message">Message</label>
             </div>
+            <div
+              class="g-recaptcha"
+              data-sitekey="6Ldscy8nAAAAAGV9pqUtBFYdLT2WIRgmxNfE8ZFv"
+            ></div>
+            <!-- Submit Button-->
+            <div class="d-grid">
+              <button
+                :class="{ disabled: !complete }"
+                class="btn btn-primary btn-lg"
+                id="submitButton"
+                type="submit"
+                v-html="loading ? 'Loading...' : 'Submit'"
+              ></button>
+            </div>
             <!-- Submit success message-->
             <transition name="fade">
               <div id="submitSuccessMessage" v-if="showSuccessMessage">
@@ -71,16 +85,6 @@
                 </div>
               </div>
             </transition>
-            <!-- Submit Button-->
-            <div class="d-grid">
-              <button
-                :class="{ disabled: !complete }"
-                class="btn btn-primary btn-lg"
-                id="submitButton"
-                type="submit"
-                v-html="loading ? 'Loading...' : 'Submit'"
-              ></button>
-            </div>
           </form>
         </div>
       </div>
