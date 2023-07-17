@@ -60,10 +60,10 @@
               ></textarea>
               <label for="message">Message</label>
             </div>
-            <div
-              class="g-recaptcha"
-              data-sitekey="6Ldscy8nAAAAAGV9pqUtBFYdLT2WIRgmxNfE8ZFv"
-            ></div>
+            <div v-if="checkRecaptcha" class="text-danger">
+              Please check the reCAPTCHA
+            </div>
+            <div class="g-recaptcha mb-3" :data-sitekey="siteKey"></div>
             <!-- Submit Button-->
             <div class="d-grid">
               <button
@@ -85,6 +85,16 @@
                 </div>
               </div>
             </transition>
+            <transition name="fade">
+              <div id="submitFailMessage" v-if="showFailMessage">
+                <div class="notification-body">
+                  <div class="text-center">
+                    <div class="fw-bolder">An Error Occurred.</div>
+                    Please try again later.
+                  </div>
+                </div>
+              </div>
+            </transition>
           </form>
         </div>
       </div>
@@ -102,6 +112,9 @@ export default {
       phone: "",
       message: "",
       showSuccessMessage: false,
+      showFailMessage: false,
+      checkRecaptcha: false,
+      siteKey: process.env.MIX_RECAPTCHA_SITE_KEY,
     };
   },
   computed: {
@@ -110,15 +123,20 @@ export default {
         this.name.length > 0 &&
         this.email.length > 0 &&
         this.phone.length > 0 &&
-        this.message.length > 0 &&
-        grecaptcha &&
-        grecaptcha.getResponse().length !== 0
+        this.message.length > 0
       );
     },
   },
   methods: {
     submitContactForm() {
       if (this.complete) {
+        if (grecaptcha.getResponse?.().length == 0) {
+          this.checkRecaptcha = true;
+          setTimeout(() => {
+            this.checkRecaptcha = false;
+          }, 3000);
+          return;
+        }
         this.loading = true;
         axios
           .post(route("contact"), {
@@ -126,6 +144,7 @@ export default {
             email: this.email,
             phone: this.phone,
             message: this.message,
+            recaptchaResponse: grecaptcha.getResponse(),
           })
           .then((response) => {
             this.loading = false;
@@ -134,9 +153,15 @@ export default {
               this.email = "";
               this.phone = "";
               this.message = "";
+              grecaptcha.reset();
               this.showSuccessMessage = true;
               setTimeout(() => {
                 this.showSuccessMessage = false;
+              }, 3000);
+            } else {
+              this.showFailMessage = true;
+              setTimeout(() => {
+                this.showFailMessage = false;
               }, 3000);
             }
           });
@@ -147,6 +172,7 @@ export default {
 </script>
 
 <style scoped>
+#submitFailMessage,
 #submitSuccessMessage {
   position: fixed;
   z-index: 1031;
