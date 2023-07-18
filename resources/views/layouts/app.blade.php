@@ -27,7 +27,7 @@
     <div id="app">
         <nav-bar name="{{ config('app.name') }}"></nav-bar>
         @yield('content')
-        <footer class="py-5 bg-dark row">
+        <footer class="py-5 bg-dark row m-0 w-100">
             <div class="text-white text-center col-12 col-lg-4 m-0">
                 <i class="bi bi-telephone-fill"></i><a class="text-white mx-1" href="tel:435-764-7542">435-764-7542</a>
             </div>
