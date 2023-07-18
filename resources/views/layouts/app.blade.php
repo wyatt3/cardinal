@@ -27,9 +27,15 @@
     <div id="app">
         <nav-bar name="{{ config('app.name') }}"></nav-bar>
         @yield('content')
-        <footer class="py-5 bg-dark">
-            <div class="container px-5">
-                <p class="m-0 text-center text-white">Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</p>
+        <footer class="py-5 bg-dark row">
+            <div class="text-white text-center col-12 col-lg-4 m-0">
+                <i class="bi bi-telephone-fill"></i><a class="text-white mx-1" href="tel:435-764-7542">435-764-7542</a>
+            </div>
+            <div class="text-white text-center col-12 col-lg-4 m-0">
+                <p class="my-2">Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</p>
+            </div>
+            <div class="text-white text-center col-12 col-lg-4 m-0">
+                <i class="bi bi-envelope-fill"></i><a class="text-white mx-1" href="mailto:roger@cardinal-surveying.com">roger@cardinal-surveying.com</a>
             </div>
         </footer>
     </div>

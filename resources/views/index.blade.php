@@ -4,6 +4,6 @@
 <mast-head></mast-head>
 <services></services>
 <about></about>
-<testimonials></testimonials>
+<!-- <testimonials></testimonials> -->
 <contact></contact>
 @endsection
