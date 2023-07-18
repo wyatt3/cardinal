@@ -172,6 +172,13 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 500px) {
+  .g-recaptcha {
+    margin: auto;
+    transform: scale(0.8);
+    transform-origin: 0 0;
+  }
+}
 #submitFailMessage,
 #submitSuccessMessage {
   position: fixed;
