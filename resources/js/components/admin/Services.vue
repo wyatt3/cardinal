@@ -2,7 +2,7 @@
   <div>
     <h1 class="mt-5">Services</h1>
     <draggable
-      class="services-list mt-3 rounded"
+      class="services-list mt-3 rounded bg-light"
       handle=".service-handle"
       v-model="services"
       v-bind="dragOptions"

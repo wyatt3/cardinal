@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-light pb-5">
+  <section class="pb-5">
     <span class="anchor" id="contact"></span>
     <div class="container px-5 my-5 px-5">
       <div class="text-center mb-5">

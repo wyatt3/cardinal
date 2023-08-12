@@ -11982,6 +11982,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  background-image: url("/img/tile.jpg");
+  background-repeat: repeat;
+}
+
 section:before {
   height: 50px;
   content: "";
