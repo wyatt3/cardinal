@@ -3,7 +3,7 @@
 @section('content')
 <mast-head></mast-head>
 <services></services>
-<about></about>
+<!-- <about></about> -->
 <!-- <testimonials></testimonials> -->
 <contact></contact>
 @endsection

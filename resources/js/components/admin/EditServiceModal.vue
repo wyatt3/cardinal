@@ -15,7 +15,7 @@
         </div>
         <div class="modal-body">
           <form>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <div class="row">
                 <div class="col-12 col-md-6">
                   <span>Current Image</span>
@@ -34,7 +34,7 @@
                 id="image"
                 @change="previewServiceImage()"
               />
-            </div>
+            </div> -->
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
               <input
@@ -44,14 +44,14 @@
                 v-model="name"
               />
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <label for="description" class="form-label">Description</label>
               <textarea
                 class="form-control"
                 id="description"
                 v-model="description"
               ></textarea>
-            </div>
+            </div> -->
           </form>
         </div>
         <div class="modal-footer">
@@ -90,17 +90,18 @@ export default {
     };
   },
   methods: {
-    previewServiceImage() {
-      let image = this.$refs.image.files[0];
-      if (!image) {
-        return;
-      }
-      this.newImage = URL.createObjectURL(image);
-    },
+    // previewServiceImage() {
+    //   let image = this.$refs.image.files[0];
+    //   if (!image) {
+    //     return;
+    //   }
+    //   this.newImage = URL.createObjectURL(image);
+    // },
     updateService() {
       this.uploading = true;
 
-      let image = this.$refs.image.files[0];
+      // let image = this.$refs.image.files[0];
+      let image = null;
 
       const formData = new FormData();
       formData.append("id", this.id);

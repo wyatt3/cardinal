@@ -1,6 +1,6 @@
 <template>
   <div
-    class="file-upload col-12 col-lg-4 d-flex flex-column justify-content-between align-items-center"
+    class="file-upload col-8 m-auto d-flex flex-column justify-content-between align-items-center"
   >
     <img
       class="w-100 mb-3 rounded"

@@ -7,7 +7,6 @@
         v-if="currentSlide === slides.indexOf(slide)"
       />
     </transition>
-    <button @click="currentSlide += 1">Slide</button>
   </header>
 </template>
 
@@ -20,8 +19,8 @@ export default {
       interval: 10000,
       slides: [
         "/storage/img/hero1.jpg",
-        "/storage/img/hero2.jpg",
-        "/storage/img/hero3.jpg",
+        // "/storage/img/hero2.jpg",
+        // "/storage/img/hero3.jpg",
       ],
     };
   },
