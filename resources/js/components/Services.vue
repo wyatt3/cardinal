@@ -6,11 +6,7 @@
         <h2 class="fw-bolder">Services</h2>
       </div>
       <div class="row justify-content-center">
-        <div
-          v-for="service in services"
-          :key="service.id"
-          class="col-12 col-md-4 mb-5"
-        >
+        <div v-for="service in services" :key="service.id" class="col-12 col-md-4 mb-5">
           <div class="card h-100">
             <!-- <img class="card-img-top" :src="'storage/img/' + service.image" /> -->
             <div class="card-body p-3">
@@ -35,7 +31,7 @@ export default {
   },
   methods: {},
   created() {
-    axios.get(route("services")).then((response) => {
+    axios.get(this.route("services")).then((response) => {
       this.services = response.data;
     });
   },

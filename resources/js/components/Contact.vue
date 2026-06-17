@@ -17,35 +17,17 @@
           >
             <!-- Name input-->
             <div class="form-floating mb-3">
-              <input
-                class="form-control"
-                id="name"
-                type="text"
-                placeholder="Enter your name..."
-                v-model="name"
-              />
+              <input class="form-control" id="name" type="text" placeholder="Enter your name..." v-model="name" />
               <label for="name">Full name</label>
             </div>
             <!-- Email address input-->
             <div class="form-floating mb-3">
-              <input
-                class="form-control"
-                id="email"
-                type="email"
-                placeholder="name@example.com"
-                v-model="email"
-              />
+              <input class="form-control" id="email" type="email" placeholder="name@example.com" v-model="email" />
               <label for="email">Email address</label>
             </div>
             <!-- Phone number input-->
             <div class="form-floating mb-3">
-              <input
-                class="form-control"
-                id="phone"
-                type="tel"
-                placeholder="(123) 456-7890"
-                v-model="phone"
-              />
+              <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" v-model="phone" />
               <label for="phone">Phone number</label>
             </div>
             <!-- Message input-->
@@ -60,9 +42,7 @@
               ></textarea>
               <label for="message">Message</label>
             </div>
-            <div v-if="checkRecaptcha" class="text-danger">
-              Please check the reCAPTCHA
-            </div>
+            <div v-if="checkRecaptcha" class="text-danger">Please check the reCAPTCHA</div>
             <div class="g-recaptcha mb-3" :data-sitekey="siteKey"></div>
             <!-- Submit Button-->
             <div class="d-grid">
@@ -114,17 +94,12 @@ export default {
       showSuccessMessage: false,
       showFailMessage: false,
       checkRecaptcha: false,
-      siteKey: process.env.MIX_RECAPTCHA_SITE_KEY,
+      siteKey: import.meta.env.MIX_RECAPTCHA_SITE_KEY,
     };
   },
   computed: {
     complete() {
-      return (
-        this.name.length > 0 &&
-        this.email.length > 0 &&
-        this.phone.length > 0 &&
-        this.message.length > 0
-      );
+      return this.name.length > 0 && this.email.length > 0 && this.phone.length > 0 && this.message.length > 0;
     },
   },
   methods: {

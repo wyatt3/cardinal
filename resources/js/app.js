@@ -1,47 +1,31 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import './bootstrap';
+import "bootstrap";
 
-require('./bootstrap');
-
-import { ZiggyVue } from 'ziggy';
+import { createApp } from 'vue';
 import { Ziggy } from './ziggy';
+import { ZiggyVue } from 'ziggy';
+import NavBar from './components/NavBar.vue';
+import MastHead from './components/MastHead.vue';
+import About from './components/About.vue';
+import Services from './components/Services.vue';
+import Testimonials from './components/Testimonials.vue';
+import Contact from './components/Contact.vue';
+import AdminMastHead from './components/admin/MastHead.vue';
+import AdminServices from './components/admin/Services.vue';
+import AdminAbout from './components/admin/About.vue';
+import Messages from './components/admin/Messages.vue';
 
-window.Vue = require('vue').default;
 
-Vue.use(ZiggyVue, Ziggy); //for laravel routes
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('nav-bar', require('./components/NavBar.vue').default);
-Vue.component('mast-head', require('./components/MastHead.vue').default);
-Vue.component('about', require('./components/About.vue').default);
-Vue.component('services', require('./components/Services.vue').default);
-Vue.component('testimonials', require('./components/Testimonials.vue').default);
-Vue.component('contact', require('./components/Contact.vue').default);
-
-Vue.component('admin-mast-head', require('./components/admin/MastHead.vue').default);
-Vue.component('admin-services', require('./components/admin/Services.vue').default);
-Vue.component('admin-about', require('./components/admin/About.vue').default);
-Vue.component('messages', require('./components/admin/Messages.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
-});
+createApp()
+    .use(ZiggyVue, Ziggy)
+    .component('nav-bar', NavBar)
+    .component('mast-head', MastHead)
+    .component('about', About)
+    .component('services', Services)
+    .component('testimonials', Testimonials)
+    .component('contact', Contact)
+    .component('admin-mast-head', AdminMastHead)
+    .component('admin-services', AdminServices)
+    .component('admin-about', AdminAbout)
+    .component('messages', Messages)
+    .mount('#app');

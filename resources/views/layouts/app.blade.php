@@ -7,10 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    @routes
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -18,9 +16,6 @@
     <link rel="prefetch" href="/storage/img/hero1.jpg" />
     <!-- <link rel="prefetch" href="/storage/img/hero2.jpg" />
     <link rel="prefetch" href="/storage/img/hero3.jpg" /> -->
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
