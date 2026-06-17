@@ -5,23 +5,20 @@
       class="services-list mt-3 rounded bg-light"
       handle=".service-handle"
       v-model="services"
-      v-bind="dragOptions"
+      group="description"
+      ghost-class="ghost"
       @start="drag = true"
       @end="endDrag()"
     >
-      <transition-group type="transition" :name="drag ? 'flip-list' : null">
-        <div
-          class="service-row d-flex px-3 py-2 align-items-center rounded justify-content-between"
-          v-for="service in services"
-          :key="service.id"
-        >
+      <template #item="{ element: service }">
+        <div class="service-row d-flex px-3 py-2 align-items-center rounded justify-content-between">
           <div class="service-handle"><i class="bi bi-list"></i></div>
           <div class="service-name" v-text="service.name"></div>
           <button class="btn btn-warning" @click="$refs.EditServiceModal.openModal(service)">
             <i class="bi bi-pencil"></i>
           </button>
         </div>
-      </transition-group>
+      </template>
     </draggable>
     <edit-service-modal @serviceUpdate="getServices()" ref="EditServiceModal"></edit-service-modal>
   </div>
@@ -47,12 +44,7 @@ export default {
   },
   computed: {
     dragOptions() {
-      return {
-        animation: 200,
-        group: "description",
-        disabled: false,
-        ghostClass: "ghost",
-      };
+      return {};
     },
   },
   methods: {
@@ -88,14 +80,6 @@ export default {
 <style scoped>
 .service-handle {
   cursor: ns-resize;
-}
-
-.flip-list-move {
-  transition: transform 0.5s;
-}
-
-.no-move {
-  transition: transform 0s;
 }
 
 .bi-list {
