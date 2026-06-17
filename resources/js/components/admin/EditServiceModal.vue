@@ -2,16 +2,10 @@
   <transition name="fade">
     <div class="edit-modal" v-if="open">
       <div class="modal-background" @click="closeModal()"></div>
-      <div
-        class="edit-modal-body p-4 rounded d-flex flex-column justify-content-between"
-      >
+      <div class="edit-modal-body p-4 rounded d-flex flex-column justify-content-between">
         <div class="modal-header">
           <h5 class="modal-title">Edit Service</h5>
-          <button
-            type="button"
-            class="btn-close"
-            @click="closeModal()"
-          ></button>
+          <button type="button" class="btn-close" @click="closeModal()"></button>
         </div>
         <div class="modal-body">
           <form>
@@ -37,12 +31,7 @@
             </div> -->
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                v-model="name"
-              />
+              <input type="text" class="form-control" id="name" v-model="name" />
             </div>
             <!-- <div class="mb-3">
               <label for="description" class="form-label">Description</label>
@@ -55,12 +44,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-primary"
-            :class="{ disabled: uploading }"
-            @click="updateService()"
-          >
+          <button type="button" class="btn btn-primary" :class="{ disabled: uploading }" @click="updateService()">
             <spinner v-if="uploading"></spinner>
             <span v-else>Save Changes</span>
           </button>
@@ -112,7 +96,7 @@ export default {
       }
 
       axios
-        .post(route("services.update"), formData, {
+        .post(this.route("services.update"), formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

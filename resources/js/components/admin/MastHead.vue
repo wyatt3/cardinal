@@ -1,17 +1,8 @@
 <template>
-  <div
-    class="file-upload col-8 m-auto d-flex flex-column justify-content-between align-items-center"
-  >
-    <img
-      class="w-100 mb-3 rounded"
-      :src="previewImage ?? '/storage/img/hero' + id + '.jpg'"
-    />
+  <div class="file-upload col-8 m-auto d-flex flex-column justify-content-between align-items-center">
+    <img class="w-100 mb-3 rounded" :src="previewImage ?? '/storage/img/hero' + id + '.jpg'" />
     <input class="d-none" type="file" ref="slide" @change="updateMastHead()" />
-    <button
-      class="btn btn-primary mb-3"
-      @click="clickFileInput()"
-      :class="{ disabled: uploading }"
-    >
+    <button class="btn btn-primary mb-3" @click="clickFileInput()" :class="{ disabled: uploading }">
       <spinner class="text-light" v-if="uploading"></spinner>
       <span v-else>Upload Image</span>
     </button>
@@ -45,7 +36,7 @@ export default {
       formData.append("image", image);
 
       axios
-        .post(route("masthead.update"), formData, {
+        .post(this.route("masthead.update"), formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

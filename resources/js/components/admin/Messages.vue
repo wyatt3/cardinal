@@ -16,9 +16,7 @@
           <td>{{ message.email }}</td>
           <td>{{ message.phone }}</td>
           <td>
-            <button class="fake-link" @click="showMessage(message)">
-              View Message
-            </button>
+            <button class="fake-link" @click="showMessage(message)">View Message</button>
           </td>
           <td>{{ message.created }}</td>
           <td>
@@ -52,7 +50,7 @@ export default {
     };
   },
   created() {
-    axios.get(route("messages")).then((response) => {
+    axios.get(this.route("messages")).then((response) => {
       this.messages = response.data;
     });
   },
@@ -62,7 +60,7 @@ export default {
       this.$refs.MessageModal.open = true;
     },
     deleteMessage(id) {
-      axios.delete(route("messages.delete", id)).then((response) => {
+      axios.delete(this.route("messages.delete", id)).then((response) => {
         this.messages = this.messages.filter((message) => message.id != id);
       });
     },

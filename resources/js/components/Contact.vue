@@ -8,13 +8,7 @@
       </div>
       <div class="row gx-5 justify-content-center">
         <div class="col-lg-6">
-          <form
-            class="position-relative"
-            id="contactForm"
-            :action="route('contact')"
-            method="POST"
-            @submit.prevent="submitContactForm"
-          >
+          <form class="position-relative" id="contactForm" method="POST" @submit.prevent="submitContactForm">
             <!-- Name input-->
             <div class="form-floating mb-3">
               <input class="form-control" id="name" type="text" placeholder="Enter your name..." v-model="name" />
@@ -114,7 +108,7 @@ export default {
         }
         this.loading = true;
         axios
-          .post(route("contact"), {
+          .post(this.route("contact"), {
             name: this.name,
             email: this.email,
             phone: this.phone,

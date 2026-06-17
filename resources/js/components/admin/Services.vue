@@ -17,19 +17,13 @@
         >
           <div class="service-handle"><i class="bi bi-list"></i></div>
           <div class="service-name" v-text="service.name"></div>
-          <button
-            class="btn btn-warning"
-            @click="$refs.EditServiceModal.openModal(service)"
-          >
+          <button class="btn btn-warning" @click="$refs.EditServiceModal.openModal(service)">
             <i class="bi bi-pencil"></i>
           </button>
         </div>
       </transition-group>
     </draggable>
-    <edit-service-modal
-      @serviceUpdate="getServices()"
-      ref="EditServiceModal"
-    ></edit-service-modal>
+    <edit-service-modal @serviceUpdate="getServices()" ref="EditServiceModal"></edit-service-modal>
   </div>
 </template>
 
@@ -66,7 +60,7 @@ export default {
       this.drag = false;
       this.services.forEach((service, index) => {
         service.order = index + 1;
-        axios.post(route("services.update-order"), {
+        axios.post(this.route("services.update-order"), {
           id: service.id,
           order: service.order,
         });
@@ -80,7 +74,7 @@ export default {
       this.$refs.EditServiceModal.open = true;
     },
     getServices() {
-      axios.get(route("services")).then((response) => {
+      axios.get(this.route("services")).then((response) => {
         this.services = response.data;
       });
     },

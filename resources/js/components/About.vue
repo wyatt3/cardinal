@@ -20,7 +20,7 @@ export default {
     };
   },
   created() {
-    axios.get(route("about")).then((response) => {
+    axios.get(this.route("about")).then((response) => {
       this.aboutUsText = response.data;
     });
   },
