@@ -88,7 +88,7 @@ export default {
       showSuccessMessage: false,
       showFailMessage: false,
       checkRecaptcha: false,
-      siteKey: import.meta.env.MIX_RECAPTCHA_SITE_KEY,
+      siteKey: import.meta.env.VITE_RECAPTCHA_SITE_KEY,
     };
   },
   computed: {
